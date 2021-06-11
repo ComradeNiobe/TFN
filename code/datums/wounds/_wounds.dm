@@ -128,7 +128,7 @@
 			qdel(src)
 			return
 
-	victim = L.owner
+	set_victim(L.owner)
 	set_limb(L)
 	LAZYADD(victim.all_wounds, src)
 	LAZYADD(limb.wounds, src)
@@ -162,6 +162,22 @@
 		wound_injury(old_wound)
 		second_wind()
 
+/datum/wound/proc/null_victim()
+	SIGNAL_HANDLER
+	set_victim(null)
+
+/datum/wound/proc/set_victim(new_victim)
+	if(victim)
+		UnregisterSignal(victim, COMSIG_PARENT_QDELETING)
+	remove_wound_from_victim()
+	victim = new_victim
+	if(victim)
+		RegisterSignal(victim, COMSIG_PARENT_QDELETING, .proc/null_victim)
+
+/datum/wound/proc/source_died()
+	SIGNAL_HANDLER
+	qdel(src)
+
 /// Remove the wound from whatever it's afflicting, and cleans up whateverstatus effects it had or modifiers it had on interaction times. ignore_limb is used for detachments where we only want to forget the victim
 /datum/wound/proc/remove_wound(ignore_limb, replaced = FALSE)
 	//TODO: have better way to tell if we're getting removed without replacement (full heal) scar stuff
@@ -170,14 +186,18 @@
 		already_scarred = TRUE
 		var/datum/scar/new_scar = new
 		new_scar.generate(limb, src)
-	if(victim)
-		LAZYREMOVE(victim.all_wounds, src)
-		if(!victim.all_wounds)
-			victim.clear_alert("wound")
-		SEND_SIGNAL(victim, COMSIG_CARBON_LOSE_WOUND, src, limb)
+	remove_wound_from_victim()
 	if(limb && !ignore_limb)
 		LAZYREMOVE(limb.wounds, src)
 		limb.update_wounds(replaced)
+
+/datum/wound/proc/remove_wound_from_victim()
+	if(!victim)
+		return
+	LAZYREMOVE(victim.all_wounds, src)
+	if(!victim.all_wounds)
+		victim.clear_alert("wound")
+	SEND_SIGNAL(victim, COMSIG_CARBON_LOSE_WOUND, src, limb)
 
 /**
  * replace_wound() is used when you want to replace the current wound with a new wound, presumably of the same category, just of a different severity (either up or down counts)

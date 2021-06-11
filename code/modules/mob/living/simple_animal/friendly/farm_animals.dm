@@ -46,15 +46,15 @@
 	udder = null
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/goat/Life()
+/mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	if(.)
 		//chance to go crazy and start wacking stuff
-		if(!enemies.len && prob(1))
+		if(!enemies.len && DT_PROB(0.5, delta_time))
 			Retaliate()
 
-		if(enemies.len && prob(10))
-			enemies = list()
+		if(enemies.len && DT_PROB(5, delta_time))
+			clear_enemies()
 			LoseTarget()
 			src.visible_message("<span class='notice'>[src] calms down.</span>")
 	if(stat == CONSCIOUS)
