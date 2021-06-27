@@ -517,3 +517,12 @@
  */
 /datum/config_entry/number/tgui_max_chunk_count
 	default = 32
+
+/datum/config_entry/number/hard_deletes_overrun_threshold
+	integer = FALSE
+	min_val = 0
+	config_entry_value = 0.5
+
+/datum/config_entry/number/hard_deletes_overrun_limit
+	config_entry_value = 0
+	min_val = 0
