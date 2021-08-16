@@ -166,6 +166,9 @@
 	var/wound_falloff_tile
 	///How much we want to drop the embed_chance value, if we can embed, per tile, for falloff purposes
 	var/embed_falloff_tile
+	var/static/list/projectile_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
 
 /obj/projectile/Initialize()
 	. = ..()
