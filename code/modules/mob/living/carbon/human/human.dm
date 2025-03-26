@@ -26,11 +26,6 @@
 	GLOB.human_list += src
 	phonevoicetag = length(GLOB.human_list)+10
 
-	if(client)
-		var/mob/living/carbon/human/H = src
-		if(is_banned_from(H.client.ckey, "Pacifism"))
-			ADD_TRAIT(H, TRAIT_PACIFISM, "pacifism_ban")
-
 /mob/living/carbon/human/proc/setup_human_dna()
 	//initialize dna. for spawned humans; overwritten by other code
 	create_dna(src)
