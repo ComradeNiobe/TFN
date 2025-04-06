@@ -196,9 +196,9 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 		test.Run()
 		test.restore_atmos()
 
-	duration = REALTIMEOFDAY - duration
-	GLOB.current_test = null
-	GLOB.failed_any_test |= !test.succeeded
+		duration = REALTIMEOFDAY - duration
+		GLOB.current_test = null
+		GLOB.failed_any_test |= !test.succeeded
 
 		var/list/log_entry = list()
 		var/list/fail_reasons = test.fail_reasons

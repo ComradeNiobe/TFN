@@ -502,11 +502,10 @@
 
 /obj/item/borg/upgrade/defib/backpack/proc/on_defib_instance_qdel_or_moved(obj/item/defibrillator/D)
 	defib_instance = null
-	if(!QDELETED(src))
-		qdel(src)
+	qdel(src)
 
 /obj/item/borg/upgrade/defib/backpack/Destroy()
-	if(!QDELETED(defib_instance))
+	if(defib_instance)
 		QDEL_NULL(defib_instance)
 	return ..()
 

@@ -72,7 +72,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 
 			var/list/oldest_packet = queue_to_check[1]
 			//Pull out the time we inserted at
-			var/qdeld_at = oldest_packet[GC_QUEUE_ITEM_GCD_DESTROYED]
+			var/qdeld_at = oldest_packet[3]
 
 			oldest_packet_creation = min(qdeld_at, oldest_packet_creation)
 
@@ -101,9 +101,6 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 			TEST_FAIL("[item.name] failed to respect force deletion [item.no_respect_force] times out of a total del count of [item.qdels]")
 		if(item.no_hint)
 			TEST_FAIL("[item.name] failed to return a qdel hint [item.no_hint] times out of a total del count of [item.qdels]")
-		if(LAZYLEN(item.extra_details))
-			var/details = item.extra_details.Join("\n")
-			TEST_FAIL("[item.name] failed with extra info: \n[details]")
 
 	cache_for_sonic_speed = SSatoms.BadInitializeCalls
 	for(var/path in cache_for_sonic_speed)

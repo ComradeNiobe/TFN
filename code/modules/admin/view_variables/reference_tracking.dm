@@ -55,7 +55,7 @@
 
 /datum/proc/DoSearchVar(potential_container, container_name, recursive_limit = 64, search_time = world.time)
 	#ifdef REFERENCE_TRACKING_DEBUG
-	if(!found_refs && SSgarbage.should_save_refs)
+	if(!found_refs)
 		found_refs = list()
 	#endif
 
@@ -89,8 +89,7 @@
 
 			if(variable == src)
 				#ifdef REFERENCE_TRACKING_DEBUG
-				if(SSgarbage.should_save_refs)
-					found_refs[varname] = TRUE
+				found_refs[varname] = TRUE
 				#endif
 				log_reftracker("Found [type] [FAST_REF(src)] in [datum_container.type]'s [FAST_REF(datum_container)] [varname] var. [container_name]")
 				continue
@@ -108,8 +107,7 @@
 			//Check normal entrys
 			if(element_in_list == src)
 				#ifdef REFERENCE_TRACKING_DEBUG
-				if(SSgarbage.should_save_refs)
-					found_refs[potential_cache] = TRUE
+				found_refs[potential_cache] = TRUE
 				#endif
 				log_reftracker("Found [type] [FAST_REF(src)] in list [container_name].")
 				continue
@@ -120,8 +118,7 @@
 			//Check assoc entrys
 			if(assoc_val == src)
 				#ifdef REFERENCE_TRACKING_DEBUG
-				if(SSgarbage.should_save_refs)
-					found_refs[potential_cache] = TRUE
+				found_refs[potential_cache] = TRUE
 				#endif
 				log_reftracker("Found [type] [FAST_REF(src)] in list [container_name]\[[element_in_list]\]")
 				continue

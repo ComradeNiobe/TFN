@@ -58,8 +58,7 @@
 /obj/item/storage/backpack/snail/dropped(mob/user, silent)
 	. = ..()
 	emptyStorage()
-	if(!QDELETED(src))
-		qdel(src)
+	qdel(src)
 
 /obj/item/storage/backpack/snail/Initialize()
 	. = ..()

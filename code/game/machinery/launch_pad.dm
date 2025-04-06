@@ -233,9 +233,7 @@
 	briefcase = _briefcase
 
 /obj/machinery/launchpad/briefcase/Destroy()
-	if(!QDELETED(briefcase))
-		qdel(briefcase)
-	briefcase = null
+	QDEL_NULL(briefcase)
 	return ..()
 
 /obj/machinery/launchpad/briefcase/isAvailable()
@@ -275,8 +273,7 @@
 
 /obj/item/storage/briefcase/launchpad/Destroy()
 	if(!QDELETED(pad))
-		qdel(pad)
-	pad = null
+		QDEL_NULL(pad)
 	return ..()
 
 /obj/item/storage/briefcase/launchpad/PopulateContents()
