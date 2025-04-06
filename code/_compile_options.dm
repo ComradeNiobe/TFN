@@ -11,7 +11,12 @@
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
 
+///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
+//#define REFERENCE_TRACKING
+#ifdef REFERENCE_TRACKING
+
 ///Used for doing dry runs of the reference finder, to test for feature completeness
+///Slightly slower, higher in memory. Just not optimal
 //#define REFERENCE_TRACKING_DEBUG
 
 ///Run a lookup on things hard deleting by default.
@@ -22,15 +27,7 @@
 
 #endif //ifdef REFERENCE_TRACKING
 
-/*
-* Enables debug messages for every single reaction step. This is 1 message per 0.5s for a SINGLE reaction. Useful for tracking down bugs/asking me for help in the main reaction handiler (equilibrium.dm).
-*
-* * Requires TESTING to be defined to work.
-*/
-//#define REAGENTS_TESTING
-
 #endif //ifdef TESTING
-
 //#define UNIT_TESTS //If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
 
 #ifndef PRELOAD_RSC //set to:
