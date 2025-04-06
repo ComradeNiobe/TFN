@@ -429,6 +429,3 @@
 #define SOUL_PRESENT 1
 #define SOUL_ABSENT 2
 #define SOUL_PROJECTING 3
-
-//Saves a proc call, life is suffering. If who has no targets_from var, we assume it's just who
-#define GET_TARGETS_FROM(who) (who.targets_from ? who.get_targets_from() : who)

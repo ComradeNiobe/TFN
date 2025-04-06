@@ -387,8 +387,6 @@
 	action_icon = 'icons/mob/actions/actions_animal.dmi'
 	action_icon_state = "wrap_0"
 	action_background_icon_state = "bg_alien"
-	//Set this to false since we're our own action, for some reason
-	has_action = FALSE
 
 /obj/effect/proc_holder/wrap/Initialize()
 	. = ..()
@@ -446,8 +444,6 @@
 	action_icon = 'icons/mob/actions/actions_animal.dmi'
 	action_icon_state = "wrap_0"
 	action_background_icon_state = "bg_alien"
-	//Set this to false since we're our own action, for some reason
-	has_action = FALSE
 
 /obj/effect/proc_holder/tarantula_charge/Initialize()
 	. = ..()

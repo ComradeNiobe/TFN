@@ -17,7 +17,7 @@
 		qdel(src)
 		return
 
-	set_victim(dismembered_part.owner)
+	victim = dismembered_part.owner
 
 	//only allows deathblow dismemberment if the victim is dead or in torpor
 	if(((dismembered_part.body_zone == BODY_ZONE_CHEST) || (dismembered_part.body_zone == BODY_ZONE_HEAD)) && (victim.health > HEALTH_THRESHOLD_DEAD))

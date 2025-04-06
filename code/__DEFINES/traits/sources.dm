@@ -127,10 +127,6 @@
 /// Traits applied to a silicon mob by their model.
 #define MODEL_TRAIT "model_trait"
 
-/// Trait granted by [mob/living/silicon/ai]
-/// Applied when the ai anchors itself
-#define AI_ANCHOR_TRAIT "ai_anchor"
-
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
 

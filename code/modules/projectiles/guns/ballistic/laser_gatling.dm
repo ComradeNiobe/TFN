@@ -23,10 +23,6 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/minigunpack/Destroy()
-	if(!QDELETED(gun))
-		qdel(gun)
-	gun = null
-	QDEL_NULL(battery)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -125,12 +121,6 @@
 	else
 		return INITIALIZE_HINT_QDEL //No pack, no gun
 
-	return ..()
-
-/obj/item/gun/ballistic/minigun/Destroy()
-	if(!QDELETED(ammo_pack))
-		qdel(ammo_pack)
-	ammo_pack = null
 	return ..()
 
 /obj/item/gun/ballistic/minigun/attack_self(mob/living/user)

@@ -297,7 +297,7 @@
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
-			M.LAssailant = WEAKREF(usr)
+			M.LAssailant = usr
 		if(isliving(M))
 			var/mob/living/L = M
 			SEND_SIGNAL(M, COMSIG_LIVING_GET_PULLED, src)

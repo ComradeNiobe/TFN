@@ -248,6 +248,7 @@
 	if(blood_id == /datum/reagent/blood) //actual blood reagent
 		var/blood_data = list()
 		//set the blood data
+		blood_data["donor"] = src
 		blood_data["viruses"] = list()
 
 		blood_data["generation"] = src.generation

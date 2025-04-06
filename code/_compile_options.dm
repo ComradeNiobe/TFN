@@ -11,13 +11,6 @@
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
 
-///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
-//#define REFERENCE_TRACKING
-#ifdef REFERENCE_TRACKING
-
-///Should we be logging our findings or not
-#define REFERENCE_TRACKING_LOG
-
 ///Used for doing dry runs of the reference finder, to test for feature completeness
 //#define REFERENCE_TRACKING_DEBUG
 
